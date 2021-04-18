@@ -23,7 +23,30 @@ func highestRank(nums []int) map[int]int {
 		}
 
 	}
-
+	printMostResult(num)
+	printWorstResult(num)
 	fmt.Println(num)
 	return num
+}
+func printMostResult(num map[int]int) {
+	var maxRank int
+	var bestNote int
+	for key, val := range num {
+		if val > maxRank {
+			maxRank = val
+			bestNote = key
+		}
+	}
+	fmt.Printf("Оценка %d получена %d раз(а)\n", bestNote, maxRank)
+}
+func printWorstResult(num map[int]int) {
+	var maxRank int = 1000
+	var worstNote int
+	for key, val := range num {
+		if val < maxRank {
+			maxRank = val
+			worstNote = key
+		}
+	}
+	fmt.Printf("Оценка %d получена %d раз(а)\n", worstNote, maxRank)
 }

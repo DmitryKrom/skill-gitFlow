@@ -21,7 +21,6 @@ func highestRank(listOfNotes []int) map[int]int {
 		notes[key] = b
 	}
 	for key, val := range notes {
-
 		fmt.Printf("Оценка %d в количестве %d\n", key, val)
 	}
 	return notes

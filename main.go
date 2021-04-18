@@ -3,30 +3,27 @@ package main
 import "fmt"
 
 func main() {
-	var nums []int = []int{1, 1, 5, 5, 3, 4, 3, 1, 1, 5, 5, 5, 5, 3, 3, 4, 3, 4, 4, 1}
-	highestRank(nums)
+	var listOfNotes []int = []int{1, 1, 5, 5, 3, 4, 3, 1, 1, 5, 5, 5, 5, 3, 3, 4, 3, 4, 4, 1}
+	highestRank(listOfNotes)
 }
 
-func highestRank(nums []int) map[int]int {
-	num := make(map[int]int)
-	for i := 0; i < len(nums); i++ {
-		var b int = 1
-		for j := i + 1; j < len(nums); j++ {
-			if nums[i] == nums[j] {
+func highestRank(listOfNotes []int) map[int]int {
+	var notes = map[int]int{1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+
+	for key := range notes {
+		var b int = 0
+		for j := 0; j < len(listOfNotes); j++ {
+			if key == listOfNotes[j] {
 				b++
 			}
 		}
-		_, ok := num[nums[i]]
-		if !ok {
-			num[nums[i]] = b
 
-		}
-
+		notes[key] = b
 	}
-	printMostResult(num)
-	printWorstResult(num)
-	fmt.Println(num)
-	return num
+	fmt.Println(notes)
+	printMostResult(notes)
+	printWorstResult(notes)
+	return notes
 }
 func printMostResult(num map[int]int) {
 	var maxRank int

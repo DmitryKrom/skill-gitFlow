@@ -8,22 +8,19 @@ func main() {
 }
 
 func highestRank(nums []int) map[int]int {
-	num := make(map[int]int)
-	for i := 0; i < len(nums); i++ {
-		var b int = 1
-		for j := i + 1; j < len(nums); j++ {
-			if nums[i] == nums[j] {
+	var notes = map[int]int{1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+
+	for key := range notes {
+		var b int = 0
+		for j := 0; j < len(nums); j++ {
+			if key == nums[j] {
 				b++
 			}
 		}
-		_, ok := num[nums[i]]
-		if !ok {
-			num[nums[i]] = b
 
-		}
-
+		notes[key] = b
 	}
 
-	fmt.Println(num)
-	return num
+	fmt.Println(notes)
+	return notes
 }
